@@ -1,38 +1,76 @@
 .App {
-  text-align: center;
+  overflow: hidden;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.transition-container {
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.background-transition--informal {
+  animation: backgroundExpandInformal 0.8s forwards;
+  animation-delay: 600ms;
+}
+
+.background-transition--formal {
+  animation: backgroundExpandFormal 0.8s forwards;
+  animation-delay: 600ms;
+}
+
+@keyframes backgroundExpandInformal {
+  0% {
+    background-color: #f87e58;
+    clip-path: circle(0% at var(--posX, 5%) var(--posY, 20px));
+  }
+  100% {
+    background-color: #f87e58;
+    clip-path: circle(120% at var(--posX, 5%) var(--posY, 20px));
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+@keyframes backgroundExpandFormal {
+  0% {
+    background-color: #e2e8f0;
+    clip-path: circle(0% at var(--posX, 5%) var(--posY, 20px));
+  }
+  100% {
+    background-color: #e2e8f0;
+    clip-path: circle(120% at var(--posX, 5%) var(--posY, 20px));
+  }
 }
 
-.App-link {
-  color: #61dafb;
+.scroll-container {
+  max-height: calc(100vh - 215px); /* Adjust based on your header/footer height */
+  overflow-y: auto;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Custom scrollbar styles */
+.scroll-container::-webkit-scrollbar {
+  width: 3px;
+}
+
+.scroll-container::-webkit-scrollbar-track {
+  background: white;
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+  background: #33918c;
+  border-radius: 6px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Firefox scrollbar styles */
+.scroll-container {
+  scrollbar-color: #888;
+}
+
+.wvs {
+  font-family: Roboto, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 20px;
+
+  letter-spacing: -2px;
 }
